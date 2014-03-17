@@ -1,0 +1,210 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+			  $("#searchButton").click(function(){
+			    $(".movieHolder").removeClass('hide').removeClass('temporalyHide');
+			    
+			     var rate = $('#imdbRate').find(":selected").text();
+			    rate = rate.replace("+","").replace(" ","");
+			    rate= rate -1;
+   		        $(".rate-"+rate).addClass('hide');
+   		        
+   		        var status = $('#seenOrNot').find(":selected").text();
+   		        if(status == 'Not Seen')
+   		        {
+   		        	$(".seen").addClass('hide');
+   		        }
+   		        else  if(status == 'Seen')
+   		        {	
+   		        	$(".notSeen").addClass('hide');
+   		        }
+   		        
+   		        
+   		       
+				var genreString = $("input[name=genre]:checked").map(function () {return this.value;}).get().join(".");
+				genreString = "."+genreString.replace(" ","");
+				if(genreString != null && genreString != '' && genreString.length >2)
+				{
+					$(".movieHolder").addClass('temporalyHide');
+					$(genreString).removeClass('temporalyHide');
+				}
+				
+				$( "body" ).scrollTop( 0 )
+			  });
+			   $(".trailer").click(function(){
+			   		var trailerUrl = $(this).attr("trailerUrl");
+			   		var newHtml = "<iframe width='420' height='345'  src='"+trailerUrl+"'> </iframe>";
+			   		$(this).html(newHtml);
+			   });
+			});
+		</script>
+		<style>
+			.movieHolder
+			{
+				width:95%;
+				padding:20px;
+				background-color :rgb(10, 107, 121);
+				margin-bottom:15px;
+				-moz-border-radius: 15px;
+				border-radius: 15px;
+			}
+			.notSeen
+			{
+				background-color :yellow !important;
+			}
+			.movieData
+			{
+				width:100%;
+			}
+			
+			.infoAndPoster
+			{
+				float:left;
+				width:65%;
+			}
+			.trailer
+			{
+				float: right;
+				width: 35%;
+				background-color: black;
+				height: 345px;
+				color: white;
+				font-size: 64px;
+				text-align: center;
+			}
+			.clear
+			{
+				clear:both;
+			}
+			.poster
+			{
+				width:225px;
+				height:350px;
+				float:left;
+				padding-left: 25px;
+			}
+			
+			.details
+			{
+				float:left;
+				padding :15px;
+				width: 500PX; 
+			}
+			
+			.movieTitle
+			{
+				font-size:30px;
+				color: black;
+				font-family: fantasy;
+				float:left;
+			}
+			
+			.imdbScore
+			{
+				font-size:24px;
+				color: black;
+				font-family: cursive;
+				float:right;
+			}
+			
+			.searchArea
+			{
+				padding-left:30px;
+				padding-top:20px;
+				background-color :black;
+				color:white;
+				position: fixed;
+				top: 10px;
+				z-index: 1000;
+				width: 95%;
+				-moz-border-radius: 15px;
+				border-radius: 15px;
+				font-family: cursive;
+			}
+			
+			.hide
+			{
+				display:none;
+			}
+			
+			.temporalyHide
+			{
+				display:none;
+			}
+			body
+			{
+				background-color:rgb(0, 0, 46);
+			}
+			
+			.searchAreaSection
+			{
+				float:left; margin-right:30px;margin-bottom: 10px;
+			}
+			
+			#searchButton
+			{
+				background-color: white;
+				color: black;
+				cursor: pointer;
+				width: 100PX;
+				text-align: center;
+				-moz-border-radius: 15px;
+				border-radius: 15px;
+				padding-top: 10PX;
+				padding-bottom: 10PX;
+				font-weight: bold;
+				font-size: 26PX;
+				padding-left: 20PX;
+				padding-right: 20PX;
+				font-family: fantasy;
+			}
+			
+		
+			.moviesDetailes
+			{
+				padding :10px;font-family: cursive;
+			}
+			
+			.trailer  iframe
+			{
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class='searchArea'>
+			<div class='searchAreaSection'>
+				<span>Search Area: </span>
+				<span>Rating: </span>
+				<select id='imdbRate'>
+					<option> 4+</option>
+					<option> 5+</option>
+					<option> 6+</option>
+					<option> 7+</option>
+					<option> 8+</option>
+					<option> 9+</option>
+				</select>
+				<span>My Status: </span>
+				<select id='seenOrNot'>
+					<option>All</option>
+					<option>Seen</option>
+					<option>Not Seen</option>
+				</select>
+			</div>
+			<div class='searchAreaSection'>
+				<span>Genre: </span><br/>
+				<MOVIES_GENRE_LIST>
+				<div style='clear:both'></div>
+			</div>
+			<div class='searchAreaSection'>
+				<div id='searchButton' >Search</div>
+			</div>
+			<div style='clear:both'></div>
+		</div>
+		<div style='height:180px;'></div>
+		<MOVIES_DATA>
+	</body>
+</html>

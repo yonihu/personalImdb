@@ -15,7 +15,7 @@ import entity.Movie;
 import fileSystem.MovieDirectoryUtil;
 import fileSystem.MovieFolder;
 
-//created by yoni 2
+//created by yoni 5
 public class ImdbMain {
     static String clientID = "JavaCodeGeeks";
     static String textQuery = null;

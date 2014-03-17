@@ -8,14 +8,8 @@ import main.ImdbMain;
 
 public class MovieDirectoryUtil 
 {
-	
-
-
-
 	private static  Set<MovieFolder> movies = new HashSet<>();
-	
-	
-	
+
 	public static Set<MovieFolder> createMoviesInDirectoryList()
 	{
 		for (int i = 0; i < ImdbMain.moviesDirectories.length; i++) {
@@ -24,7 +18,6 @@ public class MovieDirectoryUtil
 			
 			for (final File fileEntry : folder.listFiles()) {
 		        if (fileEntry.isDirectory()) {
-		        	
 		        	MovieFolder movie = MovieFolder.createMovieFolder(fileEntry);
 		        	if(movie != null)
 		        		movies.add(movie);

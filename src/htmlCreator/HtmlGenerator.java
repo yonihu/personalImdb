@@ -1,8 +1,7 @@
 package htmlCreator;
 
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import main.ImdbMain;
 import utils.FileUtil;
@@ -14,7 +13,7 @@ public class HtmlGenerator {
 	private final static String MOVIE_DATA_HTML_FILE_PATH = "src/html/movieTemplate.html";//"C:/Users/TikalKnowledge/workspace/Imdb/src/html/movieTemplate.html";
 
 
-	public static void createMoviesFile(Set<Movie> moviesData)
+	public static void createMoviesFile(List<Movie> moviesData)
 	{
 		String mainFile = FileUtil.readFile(MOVIE_HTML_FILE_PATH);
 		String singleMovieHtml = FileUtil.readFile(MOVIE_DATA_HTML_FILE_PATH);

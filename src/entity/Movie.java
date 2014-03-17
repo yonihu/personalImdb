@@ -1,9 +1,10 @@
 package entity;
 
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,26 +12,46 @@ import org.json.simple.parser.ParseException;
 
 import fileSystem.MovieFolder;
 
+@XmlRootElement
 public class Movie {
 
+	
 	private MovieFolder.FolderType type;
+	
 	private String name;
+	
 	private String year;
+	
 	private String imdbID;
+	
 	private String imdbRate;
+	
 	private String movieTrailer;
+	
 	private String plot;
+	
 	private String runTime;
+	
 	private String[] genre;
+	
 	private String[] actors;
+	
 	private String language;
+	
 	private String director;
+	
 	private String moviePoster;
 	
 	private String folderFullPath;
+		
 	boolean isSeenByMe = true;
 	
 	public static Set<String> genres = new HashSet<>();
+	
+	public Movie()
+	{
+		
+	}
 
 	public Movie(String json,String movieUrl,MovieFolder.FolderType type,String folderFullPath,String movieNameByFolder,boolean isSeenByMe) throws Exception
 	{
@@ -54,7 +75,8 @@ public class Movie {
 	public String getMoviePoster() {
 		return moviePoster;
 	}
-
+	
+	@XmlElement
 	public void setMoviePoster(String moviePoster) {
 		this.moviePoster = moviePoster;
 	}
@@ -63,6 +85,7 @@ public class Movie {
 		return director;
 	}
 
+	@XmlElement
 	public void setDirector(String director) {
 		this.director = director;
 	}
@@ -73,60 +96,80 @@ public class Movie {
 		else
 			return name;
 	}
+	
+	@XmlElement
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getYear() {
 		return year;
 	}
+	
+	@XmlElement
 	public void setYear(String year) {
 		this.year = year;
 	}
 	public String getImdbID() {
 		return imdbID;
 	}
+	
+	@XmlElement
 	public void setImdbID(String imdbID) {
 		this.imdbID = imdbID;
 	}
 	public String getImdbRate() {
 		return imdbRate;
 	}
+	
+	@XmlElement
 	public void setImdbRate(String imdbRate) {
 		this.imdbRate = imdbRate;
 	}
 	public String getMovieTrailer() {
 		return movieTrailer;
 	}
+	
+	@XmlElement
 	public void setMovieTrailer(String movieTrailer) {
 		this.movieTrailer = movieTrailer;
 	}
 	public String getPlot() {
 		return plot;
 	}
+	
+	@XmlElement
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
 	public String getRunTime() {
 		return runTime;
 	}
+	
+	@XmlElement
 	public void setRunTime(String runTime) {
 		this.runTime = runTime;
 	}
 	public String[] getGenre() {
 		return genre;
 	}
+	
+	@XmlElement
 	public void setGenre(String[] genre) {
 		this.genre = genre;
 	}
 	public String[] getActors() {
 		return actors;
 	}
+	
+	@XmlElement
 	public void setActors(String[] actors) {
 		this.actors = actors;
 	}
 	public String getLanguage() {
 		return language;
 	}
+	
+	@XmlElement
 	public void setLanguage(String language) {
 		this.language = language;
 	}
@@ -236,5 +279,42 @@ public class Movie {
 		String[] parts1 = {"NA"};
 		this.setActors(parts1);
 		setGenre(parts1);
+	}
+	
+	public String getFolderFullPath() {
+		return folderFullPath;
+	}
+
+	@XmlElement
+	public void setFolderFullPath(String folderFullPath) {
+		this.folderFullPath = folderFullPath;
+	}
+	
+	public MovieFolder.FolderType getType() {
+		return type;
+	}
+
+	@XmlElement
+	public void setType(MovieFolder.FolderType type) {
+		this.type = type;
+	}
+
+	public boolean isSeenByMe() {
+		return isSeenByMe;
+	}
+
+	@XmlElement
+	public void setSeenByMe(boolean isSeenByMe) {
+		this.isSeenByMe = isSeenByMe;
+	}
+
+	
+	public static Set<String> getGenres() {
+		return genres;
+	}
+
+	//@XmlElement
+	public static void setGenres(Set<String> genres) {
+		Movie.genres = genres;
 	}
 }

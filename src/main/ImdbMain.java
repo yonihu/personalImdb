@@ -34,6 +34,7 @@ public class ImdbMain {
 	public static final String MOVIES_DIRECTORY_FOLDER = "Users/TikalKnowledge/Desktop/movies/Seen";
 	public static final String[] moviesDirectories = {DRIVE+MOVIES_DIRECTORY_FOLDER,"C:/Users/TikalKnowledge/Desktop/movies/notSeen"};
 	public static final String cachDataFolder = DRIVE+"Users\\TikalKnowledge\\Desktop\\movies\\seen\\_data";
+	public static final String movieCachFileSuffix = "__imdbData.xml";
 	
 	public static Map<String,Movie>  moviesData = new HashMap<>();
 

@@ -19,8 +19,8 @@ public class JAxbUtil {
 	{
 		
 		 try {
-			 	System.out.println(ImdbMain.cachDataFolder + "\\"+movie.getName()+"("+movie.getYear()+")_imdbData.xml");
-				File file = new File(ImdbMain.cachDataFolder + "\\"+movie.getName()+"("+movie.getYear()+")_imdbData.xml");
+			 	System.out.println(ImdbMain.cachDataFolder + "\\"+movie.getName()+"("+movie.getYear()+")_"+ImdbMain.movieCachFileSuffix);
+				File file = new File(ImdbMain.cachDataFolder + "\\"+movie.getName()+"("+movie.getYear()+")_"+ImdbMain.movieCachFileSuffix);
 				try {
 					file.createNewFile();
 				} catch (IOException e) {
@@ -34,7 +34,6 @@ public class JAxbUtil {
 				jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		 
 				jaxbMarshaller.marshal(movie, file);
-				//jaxbMarshaller.marshal(movie, System.out);
 		 
 		  } catch (JAXBException e) {
 				e.printStackTrace();
